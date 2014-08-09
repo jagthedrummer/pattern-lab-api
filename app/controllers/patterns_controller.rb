@@ -5,11 +5,13 @@ class PatternsController < ApplicationController
   # GET /patterns.json
   def index
     @patterns = Pattern.all
+    render json: @patterns
   end
 
   # GET /patterns/1
   # GET /patterns/1.json
   def show
+    render json: @pattern
   end
 
   # GET /patterns/new
