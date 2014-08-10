@@ -28,6 +28,8 @@ gem 'spring',        group: :development
 
 gem 'active_model_serializers', '~> 0.8.1'
 
+gem 'rack-cors', '~> 0.2.9' # cross domain AJAX
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -1,5 +1,6 @@
 class PatternsController < ApplicationController
   before_action :set_pattern, only: [:show, :edit, :update, :destroy]
+  protect_from_forgery :only => []
 
   # GET /patterns
   # GET /patterns.json
@@ -28,14 +29,10 @@ class PatternsController < ApplicationController
   def create
     @pattern = Pattern.new(pattern_params)
 
-    respond_to do |format|
-      if @pattern.save
-        format.html { redirect_to @pattern, notice: 'Pattern was successfully created.' }
-        format.json { render :show, status: :created, location: @pattern }
-      else
-        format.html { render :new }
-        format.json { render json: @pattern.errors, status: :unprocessable_entity }
-      end
+    if @pattern.save
+      render json: @pattern
+    else
+      render json: @pattern.errors, status: :unprocessable_entity
     end
   end
 
